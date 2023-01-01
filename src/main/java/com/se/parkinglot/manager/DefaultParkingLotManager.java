@@ -7,7 +7,10 @@ import com.se.parkinglot.stragegy.IStopCarStrategy;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
+/**
+ * @author songwenbin
+ * @date 2023/1/1
+ */
 public class DefaultParkingLotManager implements ItfParkingLotManager{
     //管理的停车场列表
     private List<ItfParkingLot> managedParkingLots;

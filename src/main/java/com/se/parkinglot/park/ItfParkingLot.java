@@ -1,6 +1,8 @@
 package com.se.parkinglot.park;
 
 /**
+ * @author songwenbin
+ * @date 2023/1/1
  * 停车场接口
  */
 public interface ItfParkingLot {

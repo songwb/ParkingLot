@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 停车场管理员
+ * @author songwenbin
+ * @date 2023/1/1
  */
 public interface ItfParkingLotManager {
 

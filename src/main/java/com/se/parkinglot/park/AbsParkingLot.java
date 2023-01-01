@@ -1,6 +1,8 @@
 package com.se.parkinglot.park;
 
 /**
+ * @author songwenbin
+ * @date 2023/1/1
  * 停车场抽象类
  */
 public abstract class AbsParkingLot implements ItfParkingLot{
