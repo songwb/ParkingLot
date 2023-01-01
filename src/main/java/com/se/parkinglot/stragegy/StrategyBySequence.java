@@ -1,9 +1,9 @@
 package com.se.parkinglot.stragegy;
 
-import com.se.parkinglot.park.Car;
 import com.se.parkinglot.park.ItfParkingLot;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author songwenbin
@@ -16,13 +16,14 @@ public class StrategyBySequence extends AbsStopCarStrategy {
     }
 
     @Override
-    public void dispatch(Car car) {
+    public Optional<ItfParkingLot> dispatch() {
         List<ItfParkingLot> managedParkingLotList = super.getParkingLotManager().getManagedParkingLots();
         for (ItfParkingLot parkingLot : managedParkingLotList){
             if (parkingLot.isNotFull()){
-                parkingLot.inputCar(car);
+                return Optional.of(parkingLot);
             }
         }
+        return Optional.empty();
     }
 
 }

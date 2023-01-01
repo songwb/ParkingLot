@@ -1,6 +1,5 @@
 package com.se.parkinglot.stragegy;
 
-import com.se.parkinglot.park.Car;
 import com.se.parkinglot.park.ItfParkingLot;
 import org.apache.commons.collections.CollectionUtils;
 import java.util.List;
@@ -18,16 +17,17 @@ public class StrategyByFreeMin extends AbsStopCarStrategy {
     }
 
     @Override
-    public void dispatch(Car car) {
+    public Optional<ItfParkingLot> dispatch() {
         Map<Integer, List<ItfParkingLot>> managedParkingLotMap = super.getParkingLotManager().getManagedParkingLotsByFreeSpaces();
         Optional<Integer> freeSpacesOptional = managedParkingLotMap.keySet().stream().min(Integer::compareTo);
         if (freeSpacesOptional.isPresent()){
             Integer freeSpaces = freeSpacesOptional.get();
             List<ItfParkingLot> parkingLotList = managedParkingLotMap.get(freeSpaces);
             if (CollectionUtils.isEmpty(parkingLotList)){
-                return;
+                return Optional.empty();
             }
-            parkingLotList.get(0).inputCar(car);
+            return Optional.of(parkingLotList.get(0));
         }
+        return Optional.empty();
     }
 }

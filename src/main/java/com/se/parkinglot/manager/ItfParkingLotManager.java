@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public interface ItfParkingLotManager {
 
-    void stop(Car car);
+    boolean stop(Car car);
 
     void leave(Car car);
 

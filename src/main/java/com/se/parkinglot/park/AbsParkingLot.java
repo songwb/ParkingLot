@@ -21,11 +21,9 @@ public abstract class AbsParkingLot implements ItfParkingLot{
     @Override
     public boolean inputCar(Car car) {
         if (capacity > stoppedCarCount){
-            System.out.println(car.getName()+"进入"+name);
             stoppedCarCount = stoppedCarCount +1;
             return true;
         }else {
-            System.out.println(name+"已满, "+car.getName()+"不能进入"+name);
             return false;
         }
     }
@@ -48,5 +46,9 @@ public abstract class AbsParkingLot implements ItfParkingLot{
     @Override
     public int getFreeSpaceCount() {
         return capacity-stoppedCarCount;
+    }
+
+    public String getName() {
+        return name;
     }
 }

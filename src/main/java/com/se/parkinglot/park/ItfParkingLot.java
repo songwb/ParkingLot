@@ -30,4 +30,10 @@ public interface ItfParkingLot {
      * @return 返回空闲的停车位数量
      */
     int getFreeSpaceCount();
+
+    /**
+     *
+     * @return 停车场名称
+     */
+    String getName();
 }

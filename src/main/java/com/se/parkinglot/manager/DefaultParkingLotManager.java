@@ -5,44 +5,31 @@ import com.se.parkinglot.park.ItfParkingLot;
 import com.se.parkinglot.stragegy.ItfStopCarStrategy;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Optional;
+
 /**
  * @author songwenbin
- * @date 2023/1/1
+ * @date 2023/1/1 21:58.37
  */
-public class DefaultParkingLotManager implements ItfParkingLotManager{
-    //管理的停车场列表
-    private List<ItfParkingLot> managedParkingLots;
-    private ItfStopCarStrategy stopCarStrategy;
+public class DefaultParkingLotManager extends AbsParkingLotManager{
 
-    public DefaultParkingLotManager(List<ItfParkingLot> managedParkingLots, ItfStopCarStrategy stopCarStrategy){
-        this.managedParkingLots = managedParkingLots;
-        this.stopCarStrategy = stopCarStrategy;
-    }
-
-    /**
-     * @return 返回未停满的停车场Map
-     */
-    public Map<Integer, List<ItfParkingLot>> getManagedParkingLotsByFreeSpaces() {
-        return managedParkingLots.stream().filter(ItfParkingLot::isNotFull).collect(Collectors.groupingBy(ItfParkingLot::getFreeSpaceCount));
-    }
-
-    public List<ItfParkingLot> getManagedParkingLots() {
-        return managedParkingLots;
+    public DefaultParkingLotManager(List<ItfParkingLot> managedParkingLots, ItfStopCarStrategy stopCarStrategy) {
+        super(managedParkingLots, stopCarStrategy);
     }
 
     @Override
-    public void leave(Car car) {
-        for (ItfParkingLot parkingLot : managedParkingLots){
-            if (parkingLot.isNotFull()){
-                parkingLot.outCar(car);
-            }
+    protected void stopBefore(Car car) {
+        System.out.println(car.getName()+"准备停车");
+    }
+
+    @Override
+    protected boolean stopAfter(Car car, Optional<ItfParkingLot> parkingLotOptional) {
+        if (parkingLotOptional.isPresent()){
+            System.out.println(car.getName()+"进入"+parkingLotOptional.get().getName());
+            return true;
+        }else{
+            System.out.println(car.getName()+"停车失败，停车场都没有空位");
+            return false;
         }
-    }
-
-    @Override
-    public void stop(Car car) {
-        stopCarStrategy.dispatch(car);
     }
 }
