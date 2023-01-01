@@ -5,7 +5,7 @@ import com.se.parkinglot.manager.ItfParkingLotManager;
  * @author songwenbin
  * @date 2023/1/1
  */
-public abstract class AbsStopCarStrategy implements IStopCarStrategy {
+public abstract class AbsStopCarStrategy implements ItfStopCarStrategy {
     private ItfParkingLotManager parkingLotManager;
     public AbsStopCarStrategy(){
     }

@@ -6,7 +6,7 @@ import com.se.parkinglot.park.Car;
  * @author songwenbin
  * @date 2023/1/1
  */
-public interface IStopCarStrategy {
+public interface ItfStopCarStrategy {
 
     void dispatch(Car car);
 

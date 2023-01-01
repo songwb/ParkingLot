@@ -1,7 +1,7 @@
 package com.se.parkinglot.manager;
 
 import com.se.parkinglot.park.ItfParkingLot;
-import com.se.parkinglot.stragegy.IStopCarStrategy;
+import com.se.parkinglot.stragegy.ItfStopCarStrategy;
 import com.se.parkinglot.stragegy.StrategyByFreeMax;
 import com.se.parkinglot.stragegy.StrategyByFreeMin;
 import com.se.parkinglot.stragegy.StrategyBySequence;
@@ -18,7 +18,7 @@ public final class ParkingLotManagerBuilder {
 
     List<ItfParkingLot> managedParkingLotList;
 
-    IStopCarStrategy stopCarStragegy;
+    ItfStopCarStrategy stopCarStragegy;
 
     public static ParkingLotManagerBuilder newInstance(){
         return new ParkingLotManagerBuilder();
