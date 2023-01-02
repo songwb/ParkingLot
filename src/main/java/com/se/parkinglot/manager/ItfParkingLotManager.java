@@ -9,6 +9,8 @@ import java.util.Map;
 /**
  * @author songwenbin
  * @date 2023/1/1
+ *
+ * 停车场管理员接口
  */
 public interface ItfParkingLotManager {
 

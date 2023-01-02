@@ -9,6 +9,8 @@ import java.util.Optional;
 /**
  * @author songwenbin
  * @date 2023/1/1
+ *
+ * 停车调度策略接口
  */
 public interface ItfStopCarStrategy {
 

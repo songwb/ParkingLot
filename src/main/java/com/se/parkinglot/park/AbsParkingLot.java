@@ -48,6 +48,7 @@ public abstract class AbsParkingLot implements ItfParkingLot{
         return capacity-stoppedCarCount;
     }
 
+    @Override
     public String getName() {
         return name;
     }
