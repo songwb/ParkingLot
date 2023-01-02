@@ -7,9 +7,9 @@ package com.se.parkinglot.park;
  */
 public abstract class AbsParkingLot implements ItfParkingLot{
     //停车场名字
-    private String name;
+    private final String name;
     //停车场总容量
-    private int capacity;
+    private final int capacity;
     //已经停了多少车
     private int stoppedCarCount;
 
@@ -19,7 +19,7 @@ public abstract class AbsParkingLot implements ItfParkingLot{
     }
 
     @Override
-    public boolean inputCar(Car car) {
+    public synchronized boolean inputCar(Car car) {
         if (capacity > stoppedCarCount){
             stoppedCarCount = stoppedCarCount +1;
             return true;
@@ -29,7 +29,7 @@ public abstract class AbsParkingLot implements ItfParkingLot{
     }
 
     @Override
-    public boolean outCar(Car car) {
+    public synchronized boolean outCar(Car car) {
         if (stoppedCarCount>0){
             stoppedCarCount = stoppedCarCount -1;
             return true;
@@ -39,12 +39,12 @@ public abstract class AbsParkingLot implements ItfParkingLot{
     }
 
     @Override
-    public boolean isNotFull() {
+    public synchronized boolean isNotFull() {
         return capacity > stoppedCarCount;
     }
 
     @Override
-    public int getFreeSpaceCount() {
+    public synchronized int getFreeSpaceCount() {
         return capacity-stoppedCarCount;
     }
 
